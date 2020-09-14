@@ -1,0 +1,45 @@
+
+
+.image_row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.image {
+  margin: 25px;
+}
+.image:hover {
+  cursor: pointer;
+}
+
+.main_image_container {
+  position: fixed;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.next {
+  position: fixed;
+  top: 40%;
+  left: 75%;
+}
+.next:hover {
+  cursor: pointer;
+}
+
+.prev {
+  position: fixed;
+  top: 40%;
+  left: 25%;
+}
+.prev:hover {
+  cursor: pointer;
+}
+
+.exit:hover{
+  cursor: pointer;
+}
+
+

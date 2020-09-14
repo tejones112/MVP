@@ -36,3 +36,5 @@ bower_components/
 
 
 public/bundle.js
+config.js
+.aws\credentials

@@ -17,8 +17,5 @@ const artSchema = new mongoose.Schema({
 
 const ArtModel = mongoose.model('ArtModel', artSchema);
 
-// ArtModel.create({title: 'Mitch', description: 'embroidery on fabric canvas', email: 'threadNBreakfast@.com', price: '$25', image: 'https://mvplocalmarket.s3-us-west-1.amazonaws.com/IMG_1482.png'
-// });
 
-//
 module.exports.ArtModel = ArtModel;

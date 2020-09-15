@@ -18,11 +18,12 @@ class App extends React.Component {
       description: '',
       email: '',
       price: '',
-      image: null
+      imageUrl: '',
+      imageFile: null
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleFileChange = this.handleFileChange.bind(this);
-    this.createImage = this.createImage.bind(this);
+    this.createImageUrl = this.createImageUrl.bind(this);
     this.getData = this.getData.bind(this);
     this.scrollLeft = this.scrollLeft.bind(this);
     this.scrollRight = this.scrollRight.bind(this);
@@ -39,42 +40,7 @@ class App extends React.Component {
     })
   }
 
-  handleInputChange(e) {
-    const target = e.target;
-    const value = target.value;
-    const name = target.name;
-    this.setState({
-      [name]: value
-    });
-  }
 
-  handleFileChange(e) {
-    this.setState({
-      image: e.target.files[0]
-    });
-    // const data = new FormData();
-    // data.append('name', this.state.image);
-    // console.log(data.getAll('name'));
-  }
-
-  createImage(e) {
-    e.preventDefault();
-    // file = file.JSON.stringify();
-
-    const data = new FormData();
-    data.append('file', this.state.image, this.state.image.name);
-    console.log(this.state.image);
-    console.log(data.getAll('file'));
-    axios.post('/api/local-market/', data)
-      .then((res) => {
-        console.log('ART CREATED!!!');
-        // this.componentDidMount();
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-  }
-  // {title: this.state.title, description: this.state.description, email: this.state.email, price: this.state.price, image: this.state.image.name}
 
   getData() {
     axios.get('/api/local-market/')
@@ -133,6 +99,67 @@ class App extends React.Component {
     })
   }
 
+  handleInputChange(e) {
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
+    this.setState({
+      [name]: value
+    });
+  }
+
+  handleFileChange(e) {
+    this.setState({
+      imageFile: e.target.files[0]
+    });
+  }
+
+  createImageUrl(e) {
+    e.preventDefault();
+    const data = new FormData();
+    if (this.state.imageFile) {
+      data.append('artImage', this.state.imageFile, this.state.imageFile.name);
+      axios.post( '/api/profile/art-Img-Upload', data, {
+        headers: {
+         'accept': 'application/json',
+         'Accept-Language': 'en-US,en;q=0.8',
+         'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+        }
+       })
+        .then( ( response ) => {
+    if ( 200 === response.status ) {
+          if( response.data.error ) {
+           if ( 'LIMIT_FILE_SIZE' === response.data.error.code ) {
+            console.log( 'Max size: 2MB', 'red' );
+           } else {
+            console.log( response.data );
+            console.log( response.data.error, 'red' );
+           }
+          } else {
+           let fileName = response.data;
+           this.setState({
+             currentImage: fileName.location
+           })
+           console.log(fileName.location );
+           console.log( {title: this.state.title, description: this.state.description, email: this.state.email, price: this.state.price, image: this.state.currentImage} );
+           axios.post('/api/local-market/', {title: this.state.title, description: this.state.description, email: this.state.email, price: this.state.price, image: this.state.currentImage})
+           .then((data) => {
+             console.log('ART CREATED!!!! ', data)
+             this.componentDidMount();
+           })
+           .catch((err) => {
+             console.log("ERROR");
+           });
+          }
+         }
+        }).catch( ( error ) => {
+        console.log( error, 'red' );
+       });
+      } else {
+       console.log( 'Please upload file', 'red' );
+      }
+  };
+
   render() {
     return(
       <div>
@@ -154,7 +181,7 @@ class App extends React.Component {
             <br />
             Image: <input type="file" onChange={this.handleFileChange} />
             <br />
-            <button type="submit" name="file" onClick={this.createImage}>Submit</button>
+            <button type="submit" name="file" onClick={this.createImageUrl}>Submit</button>
           </form>
       </div>
     )

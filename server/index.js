@@ -9,7 +9,7 @@ const credentials = require('../config.js');
 const mongoModel = require('./database/db.js');
 
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 const app = express();
 app.use(cors());

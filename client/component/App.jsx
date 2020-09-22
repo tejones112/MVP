@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import { Carousel } from 'react-responsive-carousel';
 import ArtList from './ArtList.jsx';
+import ArtForm from './ArtForm.jsx';
 import styles from './styles.css';
 import CurrentImage from './CurrentImage.jsx';
 
@@ -170,19 +171,11 @@ class App extends React.Component {
           <div >
             <ArtList art={this.state.art} createCarousel={this.createCarousel.bind(this)}/>
           </div>
-          <form>
-            Title: <input type="text" name="title" value={this.state.title} onChange={this.handleInputChange}/>
-            <br />
-            Description: <input type="text" name="description" value={this.state.description} onChange={this.handleInputChange}/>
-            <br />
-            Email: <input type="text" name="email" value={this.state.email} onChange={this.handleInputChange}/>
-            <br />
-            Price: <input type="text" name="price" value={this.state.price} onChange={this.handleInputChange}/>
-            <br />
-            Image: <input type="file" onChange={this.handleFileChange} />
-            <br />
-            <button type="submit" name="file" onClick={this.createImageUrl}>Submit</button>
-          </form>
+          <div>
+            <ArtForm title={this.state.title}
+              description={this.state.description} email={this.state.email} price={this.state.price} image={this.state.image} handleInputChange={this.handleInputChange} handleFileChange={this.handleFileChange} createImageUrl={this.createImageUrl}
+            />
+          </div>
       </div>
     )
   }

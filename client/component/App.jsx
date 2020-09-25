@@ -29,6 +29,7 @@ class App extends React.Component {
     this.scrollLeft = this.scrollLeft.bind(this);
     this.scrollRight = this.scrollRight.bind(this);
     this.exit = this.exit.bind(this);
+    this.createCarousel = this.createCarousel.bind(this);
   }
 
   componentDidMount() {
@@ -169,11 +170,10 @@ class App extends React.Component {
             <CurrentImage currentImage={this.state.currentImage} isActive={this.state.isActive} scrollLeft={this.scrollLeft} scrollRight={this.scrollRight} exit={this.exit}/>
           </div>
           <div >
-            <ArtList art={this.state.art} createCarousel={this.createCarousel.bind(this)}/>
+            <ArtList art={this.state.art} createCarousel={this.createCarousel}/>
           </div>
           <div>
-            <ArtForm title={this.state.title}
-              description={this.state.description} email={this.state.email} price={this.state.price} image={this.state.image} handleInputChange={this.handleInputChange} handleFileChange={this.handleFileChange} createImageUrl={this.createImageUrl}
+            <ArtForm title={this.state.title} description={this.state.description} email={this.state.email} price={this.state.price} image={this.state.image} handleInputChange={this.handleInputChange} handleFileChange={this.handleFileChange} createImageUrl={this.createImageUrl}
             />
           </div>
       </div>

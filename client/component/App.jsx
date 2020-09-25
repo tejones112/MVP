@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import { Carousel } from 'react-responsive-carousel';
 import ArtList from './ArtList.jsx';
 import ArtForm from './ArtForm.jsx';
 import styles from './styles.css';

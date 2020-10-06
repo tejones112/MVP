@@ -23,6 +23,8 @@ h1{
 
 .image_container {
   margin: 25px;
+  font-family: Shadows Into Light;
+  font-size: 25px;
 }
 .image{
   max-width: 300px;
@@ -97,6 +99,18 @@ h1{
   bottom: 0;
   left: 0;
   position: fixed;
+}
+
+/*--------Upload-------*/
+
+.upload{
+  font-family: Bangers;
+  font-size: 25px;
+}
+
+.form{
+  font-family: Shadows Into Light;
+  font-size: 15px;
 }
 
 

@@ -3,10 +3,9 @@ import styles from './styles.css';
 
 
 const ArtListEntry = (props) => (
-  <div className={styles.image} >
+  <div className={styles.image_container} >
     <img
-      width="300"
-      height="300"
+      className={styles.image}
       src={props.piece.image}
       alt="Picture Of Art"
       onClick={() => {

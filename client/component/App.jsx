@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import { Carousel } from 'react-responsive-carousel';
 import ArtList from './ArtList.jsx';
 import ArtForm from './ArtForm.jsx';
 import styles from './styles.css';
@@ -165,17 +164,19 @@ class App extends React.Component {
   render() {
     return(
       <div>
-        <h1>FLAGSTAFF LOCAL ART MARKET</h1>
-          <div>
-            <CurrentImage currentImage={this.state.currentImage} isActive={this.state.isActive} scrollLeft={this.scrollLeft} scrollRight={this.scrollRight} exit={this.exit}/>
-          </div>
-          <div >
-            <ArtList art={this.state.art} createCarousel={this.createCarousel}/>
-          </div>
-          <div>
-            <ArtForm title={this.state.title} description={this.state.description} email={this.state.email} price={this.state.price} image={this.state.image} handleInputChange={this.handleInputChange} handleFileChange={this.handleFileChange} createImageUrl={this.createImageUrl}
-            />
-          </div>
+        <div className={styles.h1_container}>
+          <h1>FLAGSTAFF LOCAL ART MARKET</h1>
+        </div>
+        <div>
+          <CurrentImage currentImage={this.state.currentImage} isActive={this.state.isActive} scrollLeft={this.scrollLeft} scrollRight={this.scrollRight} exit={this.exit}/>
+        </div>
+        <div >
+          <ArtList art={this.state.art} createCarousel={this.createCarousel}/>
+        </div>
+        <div>
+          <ArtForm title={this.state.title} description={this.state.description} email={this.state.email} price={this.state.price} image={this.state.image} handleInputChange={this.handleInputChange} handleFileChange={this.handleFileChange} createImageUrl={this.createImageUrl}
+          />
+        </div>
       </div>
     )
   }

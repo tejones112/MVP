@@ -6,23 +6,19 @@ const CurrentImage = (props) => {
       return null;
   } else {
     return (
-      <div className={styles.main_image_container}>
+      <div>
         <div>
-          <button className={styles.prev} onClick={() => { props.scrollLeft() }}>Prev</button>
+          <div className={styles.background}></div>
         </div>
-        <div className={styles.image_wrapper}>
-          <img
-          width="800"
-          height="800"
-          src={props.currentImage}
-          alt="Picture Of Art"
-          />
-        </div>
-        <div>
-          <button className={styles.next} onClick={() => { props.scrollRight()}}>Next</button>
-        </div>
-        <div>
-          <button className={styles.exit} onClick={() => {props.exit()}}>X</button>
+        <div className={styles.main_image_container}>
+            <span className={styles.prev} onClick={() => { props.scrollLeft() }}>PREV</span>
+            <img
+            className={styles.main_image}
+            src={props.currentImage}
+            alt="Picture Of Art"
+            />
+            <span className={styles.next} onClick={() => { props.scrollRight()}}>NEXT</span>
+            <span className={styles.exit} onClick={() => {props.exit()}}>X</span>
         </div>
       </div>
     )

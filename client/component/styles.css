@@ -1,29 +1,65 @@
+body{
+  background: linear-gradient(135deg, #b46a2d, #d4bf47);
+  color: #0d1f31;
+}
 
+/*------Title-----*/
+h1{
+  font-family: Bangers;
+  font-size: 60px;
+}
+.h1_container{
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+/*------Images------*/
 
 .image_row {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
 }
 
-.image {
+.image_container {
   margin: 25px;
+}
+.image{
+  max-width: 300px;
+  height: auto;
+  border-style: solid;
+  border-width: 3px;
+  border-color: black;
 }
 .image:hover {
   cursor: pointer;
 }
 
+/*------Image Carousel-----*/
+
 .main_image_container {
   position: fixed;
   display: flex;
-  width: 100%;
+  max-width: 100%;
   justify-content: center;
+  z-index: 1000;
+}
+
+.main_image{
+  max-width: 30%;
+  height: auto;
+  border-style: solid;
+  border-color: black;
+  border-width: 3px;
 }
 
 .next {
   position: fixed;
   top: 40%;
-  left: 75%;
+  left: 68%;
+  color: white;
+  font-family: Shadows Into Light;
+  font-size: 25px;
 }
 .next:hover {
   cursor: pointer;
@@ -32,14 +68,47 @@
 .prev {
   position: fixed;
   top: 40%;
-  left: 25%;
+  left: 30%;
+  color: white;
+  font-family: Shadows Into Light;
+  font-size: 25px;
 }
 .prev:hover {
   cursor: pointer;
+}
+
+.exit{
+  color: white;
+  padding: 5px;
+  font-family: Shadows Into Light;
+  font-size: 25px;
 }
 
 .exit:hover{
   cursor: pointer;
 }
 
+.background{
+  background: linear-gradient(135deg, #b46a2d, #d4bf47);
+  z-index: 900;
+  opacity: 0.8;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+}
 
+
+/*-------For Phone-------*/
+@media screen and (max-width: 450px) {
+  .main_image_container, .background{
+    display: none;
+  }
+  .image_row{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+}
